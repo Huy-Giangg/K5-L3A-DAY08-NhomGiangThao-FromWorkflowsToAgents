@@ -61,6 +61,10 @@ class RefundAmountCorrect(Evaluator[Any, Trial]):
         actual = ctx.output["snapshot"].get("refund_vnd", 0)
         expected = label.get("refund_vnd", 0)
         match = actual == expected
+        res = ctx.output.get("result") or {}
+        if "proposal_amount" in res and "proposal_amount" in label:
+            if res["proposal_amount"] != label["proposal_amount"]:
+                match = False
         return EvaluationReason(value=match, reason=None if match else f"expected {expected}, got {actual}")
 
 

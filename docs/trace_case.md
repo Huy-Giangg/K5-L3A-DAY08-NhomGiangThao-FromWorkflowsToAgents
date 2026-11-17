@@ -10,18 +10,18 @@ python -m lab9.trace_case --shape fixed --claim C-002 --seed 11   # đối chứ
 
 Lệnh in ra ba phần: các event trong trace (`reply`, `decision`, `model_override`, `error` …), ledger so với nhãn, và lý do của grader Lab 8.
 
-## Mẫu điền (mỗi nhóm 1 case, lấy từ trial đang fail trong report)
+## Mẫu điền (Case C-002@11 từ seeded_regression)
 
 | Trường | Nội dung |
 |---|---|
-| Trial | `<shape> <claim>@<seed>`, run ID trong report |
-| Triệu chứng | Grader nào fail; reply nói gì so với ledger ghi gì |
-| Bước sai đầu tiên | Số thứ tự event + kind + trích payload (≤1 dòng) |
-| Vì sao là bước *đầu tiên* | Các bước trước đó đúng ra sao (dẫn số event) |
-| Failure mode | Mã FM-xx trong `docs/failure_taxonomy.md` |
-| Đối chứng | Cùng claim@seed trên shape `fixed`: bước đó khác thế nào |
-| Regression test | Tên test + grader/assert nào bắt được; đã thấy fail trên variant lỗi và pass trên `fixed` chưa |
-| Chưa chắc chắn | Điều trace không chứng minh được |
+| Trial | `seeded_regression C-002@11`, run ID `E-seeded_regression-20261117-0fb5` |
+| Triệu chứng | `lab8 grader FAIL (status resolved != denied)`; Reply nói hoàn 20.000đ và ledger ghi `refund_vnd=20000`, trong khi nhãn mong đợi là `0` (`denied`). |
+| Bước sai đầu tiên | Bước 3: `model_override` `{"delay_days": 5}` |
+| Vì sao là bước *đầu tiên* | Bước 1 `handoff` và Bước 2 `investigator` đã tra cứu đúng đơn O-202 từ Database với `delay_days: 2` (không đủ điều kiện bồi thường trễ ≥ 3 ngày). Nhưng tại bước 3, agent đã tin ticket của khách và ghi đè ngày trễ thành 5 ngày. |
+| Failure mode | `FM-03` (`ticket_trust — tin ticket hơn DB`) |
+| Đối chứng | Trên shape `fixed` (`C-002@11`), không hề có bước `model_override`. Ngay sau bước `investigator`, agent gọi `quote` trả về `amount_vnd: 0` (`no_entitlement`) và từ chối bồi thường đúng chuẩn. |
+| Regression test | Grader `DbFactKept` bắt lỗi `model_override`; metric `db_fact_kept` và `pass_rate`. Đã kiểm chứng FAIL trên `seeded_regression` và PASS trên `fixed`. |
+| Chưa chắc chắn | Trace chỉ ghi nhận hành vi đầu ra của sự kiện (`model_override`), không can thiệp được vào suy luận bên trong nếu model thực hiện âm thầm không sinh event (cần thêm bẫy `quiet_override`). |
 
 ## Quy tắc
 

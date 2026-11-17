@@ -31,4 +31,4 @@
 ## 2A202603543_NguyenHuyGiang
 - Commit 0d7c299 có workflow.py, single.py và test_member_a_shapes.py.
 - Đã tích hợp nguyên lịch sử nhánh origin/NguyenHuyGiang.
-- Báo cáo cá nhân do Giang tự viết theo thống nhất; chưa có trong commit đã tích hợp.
+- Báo cáo: report/team/2A202603543_NguyenHuyGiang.md.

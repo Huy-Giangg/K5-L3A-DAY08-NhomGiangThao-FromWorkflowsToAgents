@@ -4,7 +4,7 @@
 - Nhóm: NhomGiangThao; lớp L3A.
 - Nguyễn Huy Giang: 2A202603543; Lê Sông Thao: 2A202603534.
 - Repo: https://github.com/Huy-Giangg/K5-L3A-DAY08-NhomGiangThao-FromWorkflowsToAgents
-- Commit chốt code (trùng ADR): 97804c6c3948a5cd574b91a6ae5ddf486887bc76; nhánh tích hợp: feat/cp1-team-thao.
+- Commit chốt code (trùng ADR): 97804c6c3948a5cd574b91a6ae5ddf486887bc76; nhánh tích hợp: feat/member-b-orchestrator-evaluation.
 - Giang tự hoàn thiện báo cáo cá nhân; báo cáo này không viết thay phần tự đánh giá của Giang.
 
 ## 2. Mục tiêu và cách tiếp cận

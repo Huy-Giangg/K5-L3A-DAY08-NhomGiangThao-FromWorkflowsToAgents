@@ -4,7 +4,7 @@
 - Tên nhóm: NhomGiangThao.
 - Lớp: L3A.
 - Repo nhóm: https://github.com/Huy-Giangg/K5-L3A-DAY08-NhomGiangThao-FromWorkflowsToAgents
-- URL repo, nhánh nộp, commit chốt code: https://github.com/Huy-Giangg/K5-L3A-DAY08-NhomGiangThao-FromWorkflowsToAgents/tree/feat/cp1-team-thao; 97804c6c3948a5cd574b91a6ae5ddf486887bc76.
+- URL repo, nhánh nộp, commit chốt code: https://github.com/Huy-Giangg/K5-L3A-DAY08-NhomGiangThao-FromWorkflowsToAgents/tree/feat/member-b-orchestrator-evaluation; 97804c6c3948a5cd574b91a6ae5ddf486887bc76.
 - Báo cáo được commit sau commit code theo SUBMISSION.md; mỗi thành viên tự nộp link LMS.
 
 ## Thành viên

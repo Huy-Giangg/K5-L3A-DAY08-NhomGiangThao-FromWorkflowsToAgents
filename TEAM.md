@@ -4,15 +4,15 @@
 - Tên nhóm: NhomGiangThao.
 - Lớp: L3A.
 - Repo nhóm: https://github.com/Huy-Giangg/K5-L3A-DAY08-NhomGiangThao-FromWorkflowsToAgents
-- URL repo, nhánh nộp, commit chốt code: https://github.com/Huy-Giangg/K5-L3A-DAY08-NhomGiangThao-FromWorkflowsToAgents/tree/thao-orchestrator-evaluation; 97804c6c3948a5cd574b91a6ae5ddf486887bc76.
+- URL repo, nhánh nộp, commit chốt code: https://github.com/Huy-Giangg/K5-L3A-DAY08-NhomGiangThao-FromWorkflowsToAgents, thao-orchestrator-evaluation, 97804c6c3948a5cd574b91a6ae5ddf486887bc76
 - Báo cáo được commit sau commit code theo SUBMISSION.md; mỗi thành viên tự nộp link LMS.
 
 ## Thành viên
 
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
-| 1 | Lê Sông Thao | 2A202603534 | sirothao123@gmail.com | lesongthao | Thành viên B: Shape C, durability/security tests, benchmark, R2, ADR và tích hợp |
-| 2 | Nguyễn Huy Giang | 2A202603543 | giangnh.vinuni@gmail.com | Huy-Giangg | Thành viên A: Shape A/B và test tương ứng |
+| 1 | Lê Sông Thao | 2A202603534 | sirothao123@gmail.com | lesongthao | Shape C, durability/security tests, benchmark, R2, ADR và tích hợp |
+| 2 | Nguyễn Huy Giang | 2A202603543 | giangnh.vinuni@gmail.com | Huy-Giangg | Shape A/B và test tương ứng |
 
 ## Bảng đóng góp
 

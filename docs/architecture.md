@@ -39,7 +39,7 @@ flowchart LR
 `handoff.v1` chỉ còn các field allowlist. `parent_secret`, header, history, và tool ghi không được có mặt. Tóm tắt bằng LLM không tính là redaction.
 
 
-## Phan tich hop thanh vien B
+## Phần tích hợp thành viên B
 
 # Kiến trúc tích hợp Lab08
 

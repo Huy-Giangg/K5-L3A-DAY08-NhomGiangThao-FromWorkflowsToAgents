@@ -1,7 +1,7 @@
 # Bàn giao LAB08-MEMBER-B
 
-- Trạng thái: IN_PROGRESS.
-- Người giao/review: Codex. Người triển khai Shape C/test: Antigravity CLI.
+- Trạng thái: DONE (phần B và tích hợp; báo cáo cá nhân Giang do Giang tự viết).
+- Codex giao việc, review, áp dụng và kiểm thử; Antigravity CLI đề xuất mã Shape C/test.
 - Chủ sở hữu phần B: Lê Sông Thao, 2A202603534.
 - Git base đã tích hợp: 0d7c299 (Giang: workflow, single, test_member_a_shapes.py).
 - Working tree có TEAM.md sửa từ trước và scripts/ công cụ địa phương; giữ nguyên.
@@ -65,3 +65,11 @@ Chạy trong src/. Nếu có .venv/Scripts/python.exe, dùng executable đó tha
 Chỉ ghi phản hồi trong CLI: tệp sửa, số dòng, lệnh đã chạy, mã thoát, pass/fail, lỗi còn lại.
 Không sửa tệp bàn giao này vì Codex đang quản lý. Khi xong, báo READY_FOR_REVIEW.
 Chưa có kết quả nghiệm thu tại thời điểm giao; không chép kỳ vọng thành kết quả thật.
+
+## Kết quả thực tế
+- Git code: 97804c6c3948a5cd574b91a6ae5ddf486887bc76; Giang A/B: 0d7c2997bca1583814cc2f2270a7b43c4d6ebc35.
+- Antigravity lượt trực tiếp bị chặn ghi; lượt phản hồi .runs/20261117T002509Z-antigravity-d68aad8e có mã đề xuất.
+- Codex sửa signature issue_refund, ánh xạ ok/conflict và fixture; tăng kiểm retry/audit/crash.
+- Host/test nhóm: 76 passed; student: 248 passed; crash20/20.
+- Benchmark A/B/C:70/70, D:69/70; R2 variant70/70.
+- Chưa có student_drop/hidden; Giang tự viết báo cáo cá nhân; không nộp LMS thay thành viên.

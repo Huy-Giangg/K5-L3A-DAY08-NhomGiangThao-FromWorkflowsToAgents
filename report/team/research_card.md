@@ -1,35 +1,36 @@
 # Research card
 
-File này nằm cố định ở `report/team/research_card.md`; `python -m lab8.check_submission` đọc cột "Nhóm điền" bằng máy.
-
-Phần này nối tiếp phần mini research ở buổi lý thuyết (slide 62–63). Chọn **một** câu R1–R4, điền 6 dòng, rồi biến nó thành **một ablation** chạy được trong lab: giữ nguyên model (MockLLM), tool, seed, corpus và giá, chỉ thay đổi một biến.
-
-| Câu | Nguồn (thư viện tham khảo, slide 68–69) | Câu hỏi gợi ý cho lab |
-| --- | --- | --- |
-| R1 · Scaling | Google Research 2026, *Towards a Science of Scaling Agent Systems* | Task claims chủ yếu tuần tự hay song song được? Dự đoán thêm investigator sẽ làm pass rate và cost/success thay đổi thế nào. |
-| R2 · Failure taxonomy | MAST, NeurIPS 2025, *Why Do Multi-Agent LLM Systems Fail?* | Các trial fail của swarm (seed 55) thuộc nhóm nào: lỗi giao việc, lệch mục tiêu, hay lỗi kiểm chứng? |
-| R3 · Architecture choices | AgentArch, AACL 2026 | Nếu đổi topology mà giữ nguyên mọi thứ khác, biến nào phải cố định để kết luận còn đúng? |
-| R4 · Evaluation confounders | EMNLP 2026, *Rethinking Evaluation of MAS Efficiency* | Làm sao chứng minh chênh lệch giữa A/B/C/D là do topology, không phải do prompt, tool hay seed? |
-
 ## Phiếu của nhóm
-
-Điền vào cột cuối. Không xóa hai cột đầu.
 
 | Field | Hướng dẫn | Nhóm điền |
 | --- | --- | --- |
-| CÂU | R1 / R2 / R3 / R4 | |
-| SOURCE | Paper/blog, năm, URL, loại bằng chứng (benchmark, production report, blog kinh nghiệm) | |
-| CLAIM | Một kết luận gốc của nguồn. Không viết rộng hơn phạm vi paper | |
-| BOUNDARY | Model / dataset / setup giới hạn kết luận đó | |
-| HYPOTHESIS | Nếu đổi shape A→B (hoặc bật/tắt một thành phần), metric X sẽ đổi theo hướng nào, khoảng bao nhiêu | |
-| METHOD | Biến giữ cố định: model, tools, seed, corpus, giá, evaluator. Biến duy nhất được thay đổi: … | |
-| FAILURE / METRIC | Một lỗi dự kiến và cách đo nó: pass rate, pass^5, variance, cost/success, leak, bypass | |
+| CÂU | R1 / R2 / R3 / R4 | R2 — Failure taxonomy |
+| SOURCE | Paper/blog, năm, URL, loại bằng chứng | Cemri và cộng sự, NeurIPS 2025, nghiên cứu thực nghiệm: https://arxiv.org/abs/2503.13657v3 ; https://proceedings.neurips.cc/paper_files/paper/2025/hash/b1041e52d3be19f0a9bc491657488e4a-Abstract-Datasets_and_Benchmarks_Track.html |
+| CLAIM | Một kết luận gốc của nguồn | MAST phân 14 dạng lỗi thành ba nhóm: thiết kế hệ thống, lệch phối hợp giữa agent và kiểm chứng tác vụ. |
+| BOUNDARY | Model / dataset / setup | Paper nghiên cứu MAST-Data với hơn 1.600 trace từ 7 framework; không trực tiếp đánh giá LogiX/MockLLM. Phân loại lỗi Lab là diễn giải của nhóm. |
+| HYPOTHESIS | Nếu đổi một thành phần, metric thay đổi | Tắt việc dùng delay parse từ ticket sẽ sửa C-002/seed55: pass 69/70→70/70, variance→0; cost/success không tăng. |
+| METHOD | Biến cố định / biến thay đổi | Giữ world, 14 claim, MockLLM, seed 11/22/33/44/55, tool registry, giá, host và evaluator. Chỉ đổi parse_delay_days thành None trong wrapper; không tắt sanitization hay sửa swarm gốc. Run id tách nhánh để tránh ghi đè trace. |
+| FAILURE / METRIC | Lỗi và phép đo | task_verification: không đối chiếu delay từ ticket với order có cấu trúc. Đo pass rate, pass^5, variance và simulated cost/success; failure_analysis lưu cặp run id. |
 
 ## Kết quả ablation
+- Lệnh đã chạy trong src/: python -m bonus.member_b_research --out reports/research_r2_ablation.json
+- Kiểm hồi quy: python -m pytest -q tests/test_member_b_research.py
+- File report: src/reports/research_r2_ablation.json.
+- Run baseline: R-swarm-C-002-s55; variant: R-swarm_no_ticket_override-C-002-s55.
+- Commit code: 97804c6c3948a5cd574b91a6ae5ddf486887bc76; provenance trong report ghi HEAD và SHA-256 nguồn swarm tham chiếu.
 
-- Lệnh đã chạy (copy nguyên văn):
-- Run id / file report:
-- Kết quả so với hypothesis (đúng / sai / không kết luận được), kèm số liệu:
-- Giới hạn: MockLLM không phải model sản xuất, latency là `unavailable`.
+| Shape | Pass rate | Pass^5 | Seed min–max | Variance | Cost/success VND | Mean/p95 steps |
+| --- | ---: | ---: | --- | ---: | ---: | --- |
+| swarm | 0.985714 | 0.928571 | 0.928571–1.000000 | 0.00081633 | 49.566957 | 2.800000/3 |
+| swarm_no_ticket_override | 1.000000 | 1.000000 | 1.000000–1.000000 | 0.00000000 | 48.715714 | 2.785714/3 |
 
-Muốn đi xa hơn một ablation để lấy điểm cộng thì xem [docs/bonus_topics.md](../../docs/bonus_topics.md).
+Hypothesis được ủng hộ trên corpus này. Baseline có đúng một trial fail: C-002/seed55, status resolved thay vì denied.
+Ticket nói trễ 5 ngày trong khi order là 2 ngày; host vẫn chấp nhận vì approval hợp lệ cho số tiền đề xuất.
+Vì vậy đây là lỗi căn cứ/kiểm chứng nghiệp vụ, không phải bypass approval hoặc lỗi handoff.
+Variant sửa trial đó; không có bằng chứng để kết luận mọi swarm/model thật đều có cùng lỗi.
+
+## Giới hạn
+MockLLM, 14 public claim, một can thiệp nhỏ; latency unavailable.
+Wrapper dùng patch trong tiến trình tuần tự, không dành cho chạy nhiều thread.
+Không lấy thí nghiệm tắt sanitization vì việc đó không cần thiết để kiểm giả thuyết và có thể gây rò dữ liệu.
+Đây là research card bắt buộc, không tự nhận điểm bonus hoặc đăng ký topic.

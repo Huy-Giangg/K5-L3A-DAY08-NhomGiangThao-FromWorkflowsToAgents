@@ -8,6 +8,10 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.pytest_tmp/
+.runs/
+# Local development bridge; not part of the lab submission.
+scripts/antigravity_bridge.py
 .DS_Store
 
 # Lab 8 runtime output. Code lives in src/ and every command runs from src/.
